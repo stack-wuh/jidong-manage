@@ -37,6 +37,16 @@ export const handleBtnDelClick = (...argus) => {
   })
 }
 
+/**
+ * [handleBtnUptClick 共有方法 -- 更新按钮事件]
+ * @param  {[type]} argus [description]
+ * @return {[type]}       [description]
+ */
+export const handleBtnUptClick = (...argus) => {
+  console.log(argus)
+  store.commit('DIALOG_CLAOSE_SYNC', true)
+}
+
 export const handleBtnDtlClick = (...argus) => {
   setTimeout(() => {
     router.push({path: '/list/dtl'})

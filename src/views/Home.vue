@@ -4,14 +4,13 @@
     <section class="body-wrapper">
       <leftmenu></leftmenu>
       <section class="router-wrapper">
-        <my-crumbs></my-crumbs>
         <transition name="fade">
-          <router-view />
+          <my-schema>
+            <router-view></router-view>
+          </my-schema>
         </transition>
       </section>
-      <MyAside />
     </section>
-    <MyFooter />
 
     <my-dialog></my-dialog>
   </div>
@@ -24,6 +23,8 @@ import MyFooter from '@/components/nav/footer'
 import Leftmenu from '@/components/nav/leftmenu'
 import MyCrumbs from '@/components/nav/crumbs'
 import MyDialog from '@/components/schema/dialog'
+import MySchema from '@/components/schema/schema'
+
 export default {
   name: 'home',
   components: {
@@ -32,12 +33,14 @@ export default {
     MyFooter,
     Leftmenu,
     MyCrumbs,
-    MyDialog
+    MyDialog,
+    MySchema
   }
 }
 </script>
 <style lang="scss" scoped>
 @import '@/assets/style/mixin.scss';
+@import '@/assets/style/color.scss';
   .home{
     height: inherit;
     display: flex;
@@ -51,9 +54,10 @@ export default {
       .router-wrapper{
         @include scroll-bar;
         flex:1;
-        // height: inherit;
+        height: calc(100% - 40px);
         padding: 20px;
         border-left: 1px solid #eee;
+        background-color: $b-base;
         overflow-y: scroll;
       }
     }

@@ -24,6 +24,7 @@ import {
   BreadcrumbItem,
   Switch,
   Upload,
+  TimePicker,
   DatePicker,
   Checkbox,
   CheckboxGroup,
@@ -54,6 +55,7 @@ Vue.use(BreadcrumbItem)
 Vue.use(Switch)
 Vue.use(Upload)
 Vue.use(DatePicker)
+Vue.use(TimePicker)
 Vue.use(Checkbox)
 Vue.use(CheckboxGroup)
 Vue.use(Dropdown)

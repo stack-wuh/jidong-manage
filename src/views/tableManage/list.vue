@@ -1,7 +1,7 @@
 <template>
   <section class="my-page-table-list">
-    <my-search></my-search>
-    <my-table :list="list" params="用户列表"></my-table>
+    <my-search v-if="canShowSearchBox.includes(path)"></my-search>
+    <my-table :list="list"></my-table>
     <my-pagination :total="total" :currPage="currPageNum"></my-pagination>
   </section>
 </template>
@@ -11,6 +11,8 @@
   import MyTable from '@/components/schema/table'
   import MySearch from '@/components/schema/search'
   import MyPagination from '@/components/schema/pagination'
+
+  const canShowSearchBox = []
 
   export default {
     name: 'MyTableList',
@@ -22,14 +24,19 @@
     props: {},
     model: {},
     data (){
-      return {}
+      return {
+        canShowSearchBox,
+      }
     },
     computed: {
       ...mapState({
         list: state => state.tableData,
         total: state => state.total,
         currPageNum: state => state.currPageNum
-      })
+      }),
+      path(){
+        return this.$route.path
+      }
     },
     watch: {},
     methods: {},

@@ -13,7 +13,7 @@
             :key="index"
             :prop="item.field"
             :label="item.label"
-            :rule="item.rule">
+            :rules="item.rule">
             <template v-if="item.type == 'default'">
               <span>{{getFormModel.form[item.field]}}</span>
             </template>
@@ -86,12 +86,16 @@
         isShowDialog: state => state.isShowDialog,
         dialogTitle: state => state.dialogTitle
       }),
-      getFormModel(){
-        return FormModel[0]
+      query(){
+        let {l, f, c} = this.$route.query
+        return c || f || l
       },
-      getFormData(){
-        return this.getFormModel.forms
-      }
+      getFormModel(){
+        return FormModel.find(kk => kk.params.includes(this.query)) || {}
+      },
+      // getFormData(){
+      //   return this.getFormModel && this.getFormModel.forms
+      // }
     },
     watch: {},
     methods: {
@@ -111,6 +115,7 @@
       handleCancel() {
         Toast({type: 'info', msg: '操作已取消!'})
         this.DIALOG_CLOSE_ASYNC()
+        this.$refs.myDialogForm.resetFields()
       },
       /**
        * [handleSubmit 提交事件]

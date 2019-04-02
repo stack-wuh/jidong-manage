@@ -1,7 +1,8 @@
 import {
   handleBtnAddClick,
   handleBtnDelClick,
-  handleBtnDtlClick
+  handleBtnDtlClick,
+  handleBtnUptClick
 } from './table.click.js'
 
 export const table = [
@@ -54,37 +55,38 @@ export const table = [
     list: [
       {
         label: '账户名',
-        type: '',
+        type: 'default',
         field: ''
       },
       {
         label: '联系人姓名',
-        type: '',
+        type: 'default',
         field: ''
       },
       {
         label: '公司名称',
-        type: '',
+        type: 'default',
         field: ''
       },
       {
         label: '添加时间',
-        type: '',
+        type: 'defaultdefault',
         field: ''
       },
       {
         label: '最新编辑时间',
-        type: '',
+        type: 'default',
         field: ''
       },
       {
         label: '状态',
-        type: '',
+        type: 'default',
         field: ''
       },
       {
         label: '管理',
         type: 'setting',
+        width: '220px',
         list: [
           {
             text: '查看操作日志'
@@ -93,9 +95,144 @@ export const table = [
             text: '登录当前账户'
           },
           {
-            text: '编辑'
+            text: '编辑',
+            click: handleBtnUptClick
           }
         ]
+      },
+    ]
+  },
+  {
+    name: '充值记录',
+    params: ['/fa/list'],
+    type: 'index',
+    label: '序号',
+    list: [
+      {
+        label: '广告商',
+        type: 'default',
+        field: ''
+      },
+      {
+        label: '充值金额',
+        type: 'default',
+        field: ''
+      },
+      {
+        label: '充值时间',
+        type: 'default',
+        field: ''
+      },
+      {
+        label: '状态',
+        type: 'default',
+        field: ''
+      },
+      {
+        label: '设置',
+        type: 'setting',
+        list: [
+          {
+            text: '查看操作日志'
+          }
+        ]
+      },
+    ]
+  },
+  {
+    name: '充值记录',
+    params: ['/fau/user/recharge'],
+    type: 'index',
+    label: '序号',
+    list: [
+      {
+        label: '充值金额(元)',
+        type: 'default',
+        field: ''
+      },
+      {
+        label: '充值事件',
+        type: 'default',
+        field: ''
+      },
+      {
+        label: '状态',
+        type: 'default',
+        field: ''
+      },
+      {
+        label: '设置',
+        type: 'setting',
+        list: [
+          {
+            text: '查看操作日志'
+          }
+        ]
+      },
+    ]
+  },
+  {
+    name: '消费记录',
+    params: ['/fau/user/pay'],
+    type: 'index',
+    label: '序号',
+    list: [
+      {
+        label: '消费金额(元)',
+        type: 'default',
+        field: ''
+      },
+      {
+        label: '事项',
+        type: 'default',
+        field: ''
+      },
+      {
+        label: '消费时间',
+        type: 'default',
+        field: ''
+      },
+      {
+        label: '设置',
+        type: 'setting',
+        list: [
+          {
+            text: '查看操作日志'
+          }
+        ]
+      },
+    ]
+  },
+  {
+    name: '广告点击明细',
+    params: ['广告点击明细'],
+    type: 'index',
+    label: '序号',
+    list: [
+      {
+        label: '广告ID',
+        type: 'default',
+        field: ''
+      },
+      {
+        label: '用户昵称或唯一值',
+        type: 'default',
+        field: ''
+      },
+      {
+        label: '用户ID',
+        type: 'default',
+        field: ''
+      },
+      {
+        label: '是否来自分享',
+        type: 'default',
+        field: ''
+      },
+      {
+        label: '点击时间',
+        type: 'default',
+        field: ''
       },
     ]
   },

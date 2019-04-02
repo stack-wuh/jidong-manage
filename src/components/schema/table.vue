@@ -1,7 +1,7 @@
 <template>
   <section class="table-wrapper">
     <header class="my-table-header">
-      <span class="my-table-header__title">{{params || '用户列表'}}</span>
+      <span class="my-table-header__title">{{params || query}}</span>
       <div class="my-table-header__right-area">
         <slot name="right"></slot>
       </div>
@@ -15,16 +15,22 @@
             <img :src="scope.row[item.field]" alt="logo">
           </template>
         </el-table-column>
-        <el-table-column :width="item.width" fixed="right" align="center" v-if="item.type === 'setting'" :label="item.label" :prop="item.field">
-          <template slot-scope="scope">
-            <el-button
-              v-if="item && item.list"
-              v-for="(btn, bid) in item.list"
-              :key="'b' + bid"
-              type="text"
-              @click="btn.click({$router: $router, $route: $route, query: $route.query, btn, params: scope.row})"
-              >{{btn.text}}</el-button>
-          </template>
+        <el-table-column
+          :width="item.width"
+          fixed="right"
+          align="center"
+          v-if="item.type === 'setting'"
+          :label="item.label"
+          :prop="item.field">
+            <template slot-scope="scope">
+              <el-button
+                v-if="item && item.list"
+                v-for="(btn, bid) in item.list"
+                :key="'b' + bid"
+                type="text"
+                @click="btn.click({$router: $router, $route: $route, query: $route.query, btn, params: scope.row})"
+                >{{btn.text}}</el-button>
+            </template>
         </el-table-column>
       </section>
     </el-table>
@@ -61,7 +67,11 @@ export default {
       return this.$route.query.c || this.$route.query.f || this.$route.query.l
     },
     tableList(){
-      return table.find(kk => kk.params.includes(this.params || this.query))
+      switch (this.query) {
+        case '充值记录': return table.find(kk => kk.params.includes(this.$route.path))
+        case '消费记录': return table.find(kk => kk.params.includes(this.$route.path)) 
+        default: return table.find(kk => kk.params.includes(this.params || this.query))
+      }
     }
   },
   filters: {},

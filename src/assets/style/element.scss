@@ -1,6 +1,30 @@
+@import '@/assets/style/mixin.scss';
+@import '@/assets/style/color.scss';
+
 .signin-wrapper {
   .el-form-item__error {
     width: 70%;
     margin-left: 15%;
   }
+}
+.my-page-leftmenu {
+  .el-menu{
+    .el-submenu__title {
+      color: $t-light;
+      &:hover {
+        background-color: rgba(161, 171, 179, .4);
+        transition: all .3 ease;
+      }
+    }
+    .el-menu-item {
+      background-color: $b-dark;
+    }
+  }
+}
+
+@include b(btn-area) {
+  @include flex($dir: row, $align: center, $justify: center);
+  width: inherit;
+  height: 60px;
+  margin: 5px 0;
 }

@@ -1,7 +1,7 @@
 <template>
   <section class="page">
     <my-search></my-search>
-    <my-table params="用户列表" :list="userList">
+    <my-table :list="userList">
       <div slot="right" class="list-button-group">
         <el-button>导出</el-button>
         <el-button>导入</el-button>
